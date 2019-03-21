@@ -23,5 +23,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "browser-router": "^0.2.0",
+    "react-router-dom": "^5.0.0"
+  }
 }
