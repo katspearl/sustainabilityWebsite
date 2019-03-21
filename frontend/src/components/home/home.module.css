@@ -1,6 +1,6 @@
 .homeWrapper {
   display: grid;
-  grid-template-columns: 4fr 6fr;
+  grid-template-columns: 1fr 1fr;
   height: 100vh;
   width: 100vw;
 }
@@ -77,17 +77,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-}
-
-.right > * {
-  /* border: 1px solid red; */
 }
 
 .leftScore {
