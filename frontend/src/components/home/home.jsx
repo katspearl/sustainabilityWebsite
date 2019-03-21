@@ -21,17 +21,21 @@ class Home extends Component {
   componentDidMount = async () => {
     var respPledges = await fetch("http://localhost:5000/pledges");
     var respUserInfo = await fetch("http://localhost:5000/user/arthur01");
-    var respPercentile = await fetch(
-      "http://localhost:5000/percentile/arthur01"
-    );
+    var respPercentile = await fetch("http://localhost:5000/percentile/arthur01");
+    var respPledgeScores = await fetch("http://localhost:5000/pledges");
+    
     const pledges = await respPledges.json();
     const userInfo = await respUserInfo.json();
     const percentile = await respPercentile.json();
+    const pledgeScores = await pledgeScores.json();
+
     console.log(pledges, userInfo);
+    
     this.setState({
       userInfo: userInfo[0],
       userPledge: userInfo[1],
-      percentile: percentile
+      percentile: percentile,
+      pledgeScores: pledgeScores,
     });
   };
 
@@ -133,9 +137,9 @@ class Home extends Component {
         <div className={stylesR.right}>
 
           <Card title={"Pledges"}>
-            <Pledge val={11} ppl={3}> alternative modes of transportation used by</Pledge>
-            <Pledge val={23} ppl={5}> plant based meals eaten by</Pledge>
-            <Pledge val={333} ppl={7}> disposable items replaced with reusable items by</Pledge>
+            <Pledge val={this.state.pledgeScores[0]} ppl={3}> alternative modes of transportation used by</Pledge>
+            <Pledge val={this.state.pledgeScores[1]} ppl={5}> plant based meals eaten by</Pledge>
+            <Pledge val={this.state.pledgeScores[2]} ppl={7}> disposable items replaced with reusable items by</Pledge>
           </Card>
           <Card title={"Sustainability Checklist"} alignRight={true}>
             <div>
@@ -178,7 +182,6 @@ class Home extends Component {
               <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Admire
               our newly made recycling bin signs!
             </div>
-          {/* </div> */}
           </Card>
         </div>
       </div>
@@ -187,7 +190,7 @@ class Home extends Component {
 }
 
 function Card(props) {
-  var c = "";
+  var c = "";pledgeScores
   if (props.alignRight == true) {
     c += stylesR.alignRight;
   }
