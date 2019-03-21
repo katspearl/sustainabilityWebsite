@@ -15,7 +15,12 @@ class Home extends Component {
       userInfo: {},
       userPledge: {},
       percentile: 0,
-      pledgeScores: [{ pledgeScore: 0 }, { pledgeScore: 0 }, { pledgeScore: 0 }]
+      pledgeScores: [
+        { pledgeScore: 0 },
+        { pledgeScore: 0 },
+        { pledgeScore: 0 }
+      ],
+      checkNames: []
     };
   }
 
@@ -31,14 +36,24 @@ class Home extends Component {
     const userInfo = await respUserInfo.json();
     const percentile = await respPercentile.json();
     const pledgeScores = await respPledgeScores.json();
-
-    console.log(pledges, userInfo, pledgeScores);
-
+    const checkNames = [
+      "Take your number 6 plastic to the station during Willy Week",
+      "Buy one Fair Trade certified product",
+      "Take your e-waste to a Rice e-waste station",
+      "Visit the Rice Farmers Market",
+      "Bring your own cup to a party",
+      "Bring your own mug to Coffeehouse or East West",
+      "Sign up for a weekly fact with RISE Today",
+      "Wash your clothes with cold water",
+      "Cook one meal for yourself",
+      "Admire our newly made recycling bin signs!"
+    ];
     this.setState({
       userInfo: userInfo[0],
       userPledge: userInfo[1],
       percentile: percentile,
-      pledgeScores: pledgeScores
+      pledgeScores: pledgeScores,
+      checkNames: checkNames
     });
   };
 
@@ -59,6 +74,16 @@ class Home extends Component {
       : pledge.pledgeScore - 1;
     // console.log(info);
     this.setState({ userInfo: info, userPledge: pledge });
+  };
+
+  checkBox = async (event, index) => {
+    const resp = await fetch(`http://localhost:5000/check/arthur01/${index}`, {
+      method: "POST"
+    });
+    const res = await resp.json();
+    var info = this.state.userInfo;
+    info.checkList = res;
+    this.setState({ userInfo: info });
   };
 
   render() {
@@ -159,53 +184,116 @@ class Home extends Component {
             </Pledge>
           </Card>
           <Card title={"Sustainability Checklist"} alignRight={true}>
-            <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Take
-              your number 6 plastic to the station during Willy Week
+            {/* <div>
+              <input
+                onClick={this.checkBox(0)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Take your number 6 plastic to the station during Willy Week
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Buy
-              one Fair Trade certified product (
+              <input
+                onClick={this.checkBox(1)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />{" "}
+              &nbsp; Buy one Fair Trade certified product (
               <a href="https://pin.it/gjtwq5tmyjfiis">link</a>).
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Take
-              your e-waste to a Rice e-waste station (
+              <input
+                onClick={this.checkBox(2)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />{" "}
+              &nbsp; Take your e-waste to a Rice e-waste station (
               <a href="https://facilities.rice.edu/recycling/special">link</a>).
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-              Visit the Rice Farmers Market (
+              <input
+                onClick={this.checkBox(3)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Visit the Rice Farmers Market (
               <a href="https://farmersmarket.rice.edu/">link</a>).
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-              Bring your own cup to a party
+              <input
+                onClick={this.checkBox(4)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Bring your own cup to a party
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-              Bring your own mug to Coffeehouse or East West
+              <input
+                onClick={this.checkBox(5)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Bring your own mug to Coffeehouse or East West
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Sign
-              up for a weekly fact with RISE Today
+              <input
+                onClick={this.checkBox(6)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Sign up for a weekly fact with RISE Today
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Wash
-              your clothes with cold water
+              <input
+                onClick={this.checkBox(7)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Wash your clothes with cold water
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Cook
-              one meal for yourself (
+              <input
+                onClick={this.checkBox(8)}
+                type="checkbox"
+                name="vehicle1"
+                value="Bike"
+              />
+              &nbsp; Cook one meal for yourself (
               <a href="https://www.favfamilyrecipes.com/easy-college-recipes-for-college-students/">
                 link
               </a>
               ).
             </div>
             <div>
-              <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-              Admire our newly made recycling bin signs!
-            </div>
+              <input
+                onClick={this.checkBox(9)}
+                type="checkbox"
+                name="vehicle1"
+                value="true"
+              />
+              &nbsp; Admire our newly made recycling bin signs!
+            </div> */}
+            {this.state.checkNames.map((name, index) => {
+              return (
+                <div>
+                  <input
+                    key={index}
+                    onClick={e => this.checkBox(e, index)}
+                    type="checkbox"
+                    checked={this.state.userInfo.checkList[index]}
+                  />
+                  &nbsp; {name}
+                </div>
+              );
+            })}
           </Card>
         </div>
       </div>

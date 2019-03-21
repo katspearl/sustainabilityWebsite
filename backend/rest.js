@@ -67,6 +67,7 @@ app.get("/login/:username", async function(req, res) {
 app.post("/check/:username/:checkIndex", async function(req, res) {
   const username = req.params.username.split("+").join(" ");
   const checkIndex = parseInt(req.params.checkIndex);
+  console.log(checkIndex);
   const resp = await connection.updateCheck(username, checkIndex);
   res.json(resp);
 });

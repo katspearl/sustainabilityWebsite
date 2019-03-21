@@ -134,9 +134,11 @@ class Login extends Component {
             placeholder="password..."
             onChange={e => this.updateSignUpPassword(e)}
           />
+          s e l e c t a p l e d g e
           <div
             data-index="0"
             onClick={e => this.setPledge(e)}
+            style={{ marginTop: "1vh" }}
             className={[
               styles.pledgeCheck,
               styles.c1,

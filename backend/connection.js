@@ -125,7 +125,7 @@ async function updateCheck(username, checkIndex) {
   });
 
   var newCheckList = user.checkList;
-  newCheckList[checkIndex] = !newCheckList[checkIndex];
+  newCheckList[parseInt(checkIndex)] = !newCheckList[parseInt(checkIndex)];
   await Users.findOneAndUpdate(
     {
       username: username
