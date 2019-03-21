@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import FormControl from "react-bootstrap/FormControl";
 import styles from "./login.module.css";
 import Avacado2 from "./YUM2.png";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class Login extends Component {
       loginPassword: "",
       signUpUsername: "",
       signUpPassword: "",
-      error: false
+      error: false,
+      route: false
     };
   }
 
@@ -26,7 +28,7 @@ class Login extends Component {
     if (!this.state.formVisible) {
       this.setState({ formVisible: true });
     } else {
-      if (pledge != -1 && signUpPassword !== "" && signUpUsername !== "") {
+      if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "") {
         const res = await fetch(
           `http://localhost:5000/user/${
             this.state.signUpUsername
@@ -38,7 +40,7 @@ class Login extends Component {
         const accountMade = await res.json();
         console.log(accountMade);
         if (accountMade) {
-          this.props.history.replace("/dashboard");
+          this.setState({ route: true });
         } else {
           this.setState({ error: true });
         }
@@ -136,10 +138,10 @@ class Login extends Component {
 
     return (
       <div className={styles.loginWrapper}>
+        {this.state.route ? <Redirect to={"/dashboard"} /> : null}
         <div className={styles.left}>
           <img src={Avacado2} alt="asdfasdf" />
         </div>
-
         <div className={styles.right}>
           <div className={styles.loginForm}>
             <input

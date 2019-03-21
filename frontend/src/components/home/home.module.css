@@ -61,3 +61,14 @@
     #d0c9ea 100%
   );
 }
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.right > * {
+  /* border: 1px solid red; */
+}
