@@ -1,0 +1,58 @@
+.homeWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.left {
+  background: rgb(0, 255, 0, 0.5);
+  display: grid;
+  grid-template-rows: 70% 30%;
+  height: 100%;
+  width: 100%;
+}
+
+.mainScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personalScore {
+  width: 50vh;
+  height: 50vh;
+  /* border: solid 1px #555; */
+  background-color: white;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 220px;
+  font-weight: bold;
+}
+
+.personalShadow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 5px black;
+}
+
+.secondaryScores {
+  padding: 0 3vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.smallerScore {
+  width: 12vw;
+  height: 12vw;
+  background-color: white;
+  border-radius: 3vw;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
+  background-image: linear-gradient(white, #d0c9ea);
+}
