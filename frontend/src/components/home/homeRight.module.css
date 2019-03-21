@@ -1,29 +1,15 @@
 .right {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   
   overflow-y: scroll;
 
   height: 100vh;
-
+  
+  background: rgb(0, 255, 0, 0.5);
   /* border: 3px dashed red; */
-}
-
-.right > * {
-  /* border: 1px solid red; */
-}
-
-.pledgeWrapper {
-  /* text-align: center; */
-
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-
-  /* border: 2px dashed blue; */
 }
 
 .pledge {
@@ -34,7 +20,7 @@
   justify-content: flex-start;
   align-items: center;
 
-  background:#d0c9ea;
+  border: 2px solid #d0c9ea;
   border-radius: 20px;
   padding: 20px;
   height: 4rem;
@@ -42,22 +28,17 @@
 
   margin: 1vh;
 
-  color: white;
+  color: black;
 }
 
 .pledgeVal {
   font-size: 2rem;
   font-weight: bold;
-  /* background: #d0c9ea; */
-  /* border-radius: 100px; */
-  /* width: 50px; */
-  /* height: 50px; */
   margin-right: 5px;
 }
 
 .title {
   border-bottom: 3px solid pink;
-  /* background: #da1b60;; */
   padding: 5px;
   padding-left: 20px;
   color: black;
@@ -65,7 +46,12 @@
   font-weight: bold;
   width: 100%;
   text-align: left;
-  /* margin-bottom: 20px; */
+}
+
+.alignRight {
+  align-self: flex-end;
+  margin-top: 50px !important;
+  margin-right: 50px !important;
 }
 
 /* --niceOrange: #ff8a00; */
@@ -75,4 +61,28 @@
 
 .checklistWrapper {
 
+}
+
+.card {
+  /* align-self: flex-start; */
+  margin: 5px;
+  /* align-self: flex-end; */
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.cardTitle {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  background: #d0c9ea;
+  color: white;
+  padding: 7px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.cardContent {
+  padding: 20px;
 }

@@ -131,14 +131,13 @@ class Home extends Component {
           <div className={styles.secondaryScores} />
         </div>
         <div className={stylesR.right}>
-          <Title title={"Pledge Totals"} />
-          <div className={stylesR.pledgeWrapper}>
-            <Pledge val={11}> alternative modes of transportation used</Pledge>
-            <Pledge val={23}> plant based meals eaten</Pledge>
-            <Pledge val={333}> disposable items replaced with reusable items</Pledge>
-          </div>
-          <Title title={"Sustainability Checklist"} />
-          <div className={stylesR.checklistWrapper}>
+
+          <Card title={"Pledges"}>
+            <Pledge val={11} ppl={3}> alternative modes of transportation used by</Pledge>
+            <Pledge val={23} ppl={5}> plant based meals eaten by</Pledge>
+            <Pledge val={333} ppl={7}> disposable items replaced with reusable items by</Pledge>
+          </Card>
+          <Card title={"Sustainability Checklist"} alignRight={true}>
             <div>
               <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Take
               your number 6 plastic to the station during Willy Week
@@ -179,40 +178,29 @@ class Home extends Component {
               <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Admire
               our newly made recycling bin signs!
             </div>
-          </div>
-          <Title title={"Leaderboard"} />
-          <div>
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf laasasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf laasasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf laasasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-            asasdfjasdj asdjfla sjdflkaj dlfjalkd fjalskjf lasdjf lasdjf lkasjdf lasjdlf ajsdlfk jasdlfj alskdjf laksdjf la
-
-
-
-          </div>
+          {/* </div> */}
+          </Card>
         </div>
       </div>
     );
   }
 }
 
-function Title(props) {
-  return (<div className={stylesR.title} >{props.title}</div>);
+function Card(props) {
+  var c = "";
+  if (props.alignRight == true) {
+    c += stylesR.alignRight;
+  }
+  return (
+  <div className={[stylesR.card, c].join(' ')}>
+    <div className={stylesR.cardTitle}>{props.title}</div>
+    <div className={stylesR.cardContent}>{props.children}</div>
+  </div>
+  );
 }
 
 function Pledge(props) {
-  return (<div className={stylesR.pledge}><span className={stylesR.pledgeVal}>{props.val}</span>{props.children}</div>);
+  return (<div className={stylesR.pledge}><span className={stylesR.pledgeVal}>{props.val}</span>{props.children} {props.ppl} people.</div>);
 }
 
 export default Home;
