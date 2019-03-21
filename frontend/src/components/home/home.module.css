@@ -6,7 +6,7 @@
 }
 
 .left {
-  background: rgb(0, 255, 0, 0.5);
+  background: rgb(175, 255, 191);
   /* display: grid;
   grid-template-rows: 67% 33%; */
   position: relative;
@@ -168,4 +168,10 @@
 .rightScore {
   bottom: -32%;
   right: 15%;
+}
+
+.rightSection {
+  width: 100%;
+  background-color: #1b4079;
+  color: white;
 }

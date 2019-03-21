@@ -13,7 +13,6 @@ mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 const user = new Schema({
   username: String,
-  password: String,
   pledgeNumber: Number,
   score: Number,
   checkList: [Boolean]
@@ -75,14 +74,11 @@ async function createUser(username, password, pledgeNumber) {
   if (!find) {
     await Users.create({
       username: username,
-      password: password,
       pledgeNumber: pledgeNumber,
       score: 0
     }).catch(err => {
       return false;
     });
-
-    const resp = await Pledges.findOne({ pledgeNumber: pledgeNumber });
     // console.log(resp);
     await Pledges.findOneAndUpdate(
       { pledgeNumber: pledgeNumber },
@@ -98,6 +94,50 @@ async function createUser(username, password, pledgeNumber) {
     return true;
   }
   return false;
+}
+
+async function login(username) {
+  const find = await Users.findOne({ username: username });
+  if (!find) return false;
+  else return true;
+}
+
+async function percentile(username) {
+  const user = await Users.findOne({ username: username });
+  const numUsers = await Users.find({
+    pledgeNumber: user.pledgeNumber
+  }).countDocuments();
+  const lessThanUser = await Users.find({
+    score: { $lte: user.score },
+    pledgeNumber: user.pledgeNumber
+  }).countDocuments();
+  //   console.log(numUsers);
+  //   console.log(lessThanUser);
+  const percentile = (lessThanUser / (numUsers * 1.0)) * 100;
+  const rounded = Math.round(percentile);
+  return rounded;
+}
+
+async function updateCheck(username, checkIndex) {
+  var key = "checkList." + checkIndex;
+  var user = await Users.findOne({
+    username: username
+  });
+
+  var newCheckList = user.checkList;
+  newCheckList[checkIndex] = !newCheckList[checkIndex];
+  await Users.findOneAndUpdate(
+    {
+      username: username
+    },
+    {
+      $set: { checkList: newCheckList }
+    },
+    {
+      upsert: true
+    }
+  );
+  return newCheckList;
 }
 
 async function updateScores(username, isIncrement) {
@@ -134,7 +174,7 @@ async function updateScores(username, isIncrement) {
   ];
   await Promise.all(promises);
 
-  console.log(resp.score + val);
+  //   console.log(resp.score + val);
   return resp.score + val;
 }
 
@@ -149,5 +189,10 @@ module.exports = {
   getInfo: getInfo,
   updateScores: updateScores,
   createUser: createUser,
-  getPledges: getPledges
+  getPledges: getPledges,
+  login: login,
+  percentile: percentile,
+  updateCheck: updateCheck
 };
+
+// percentile("arthur01");

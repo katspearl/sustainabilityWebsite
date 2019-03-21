@@ -58,6 +58,25 @@ app.get("/pledges", async function(req, res) {
   res.json(resp);
 });
 
+app.get("/login/:username", async function(req, res) {
+  const username = req.params.username.split("+").join(" ");
+  const resp = await connection.login(username);
+  res.json(resp);
+});
+
+app.post("/check/:username/:checkIndex", async function(req, res) {
+  const username = req.params.username.split("+").join(" ");
+  const checkIndex = parseInt(req.params.checkIndex);
+  const resp = await connection.updateCheck(username, checkIndex);
+  res.json(resp);
+});
+
 app.listen(5000, function() {
   console.log("Example app listening on port 5000!");
+});
+
+app.get("/percentile/:username", async function(req, res) {
+  const username = req.params.username.split("+").join(" ");
+  const resp = await connection.percentile(username);
+  res.json(resp);
 });
