@@ -16,7 +16,8 @@ class Login extends Component {
       loginPassword: "",
       signUpUsername: "",
       signUpPassword: "",
-      error: false,
+      signUpError: false,
+      loginError: false,
       route: false
     };
   }
@@ -42,13 +43,29 @@ class Login extends Component {
         if (accountMade) {
           this.setState({ route: true });
         } else {
-          this.setState({ error: true });
+          this.setState({ signUpError: true });
         }
       }
     }
   };
 
-  handleLogin = () => {};
+  handleLogin = async () => {
+    const loginUsername = this.state.loginUsername;
+    const loginPassword = this.state.loginPassword;
+
+    if (loginPassword !== "" && loginUsername !== "") {
+      const res = await fetch(
+        `http://localhost:5000/login/${this.state.loginUsername}`
+      );
+      const accountExists = await res.json();
+      if (accountExists) {
+        this.setState({ route: true });
+      } else {
+        console.log("do i get in here?");
+        this.setState({ loginError: true });
+      }
+    }
+  };
 
   updateSignUpUsername = evt => {
     // console.log(evt.target.value);
@@ -93,10 +110,16 @@ class Login extends Component {
       </div>
     );
 
+    let loginError = (
+      <div className={styles.loginErrorMessage}>
+        <span>Username doesn't exist!</span>
+      </div>
+    );
+
     if (this.state.formVisible) {
       signupForm = (
         <div className={styles.signupForm}>
-          {this.state.error ? errorMessage : null}
+          {this.state.signUpError ? errorMessage : null}
           <input
             type="text"
             id="uname"
@@ -114,21 +137,33 @@ class Login extends Component {
           <div
             data-index="0"
             onClick={e => this.setPledge(e)}
-            className={[styles.pledgeCheck, styles.c1].join(" ")}
+            className={[
+              styles.pledgeCheck,
+              styles.c1,
+              this.state.pledge === 0 ? styles.selectedPledge : ""
+            ].join(" ")}
           >
             Eat more plant-based meals.
           </div>
           <div
             data-index="1"
             onClick={e => this.setPledge(e)}
-            className={[styles.pledgeCheck, styles.c2].join(" ")}
+            className={[
+              styles.pledgeCheck,
+              styles.c2,
+              this.state.pledge === 1 ? styles.selectedPledge : ""
+            ].join(" ")}
           >
             Use more alternative transportation.
           </div>
           <div
             data-index="2"
             onClick={e => this.setPledge(e)}
-            className={[styles.pledgeCheck, styles.c3].join(" ")}
+            className={[
+              styles.pledgeCheck,
+              styles.c3,
+              this.state.pledge === 2 ? styles.selectedPledge : ""
+            ].join(" ")}
           >
             Replace disposable items with reusables.
           </div>
@@ -158,9 +193,11 @@ class Login extends Component {
               placeholder="password..."
               onChange={e => this.updateLoginPassword(e)}
             />
-            <div className={styles.loginBtn}>Log in</div>
+            <div onClick={this.handleLogin} className={styles.loginBtn}>
+              Log in
+            </div>
           </div>
-
+          {this.state.loginError ? loginError : null}
           <h2>s u s t a i n a b i l i t y</h2>
           <div className={this.state.formVisible ? styles.signupWrapper : ""}>
             {signupForm}

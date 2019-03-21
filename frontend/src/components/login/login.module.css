@@ -181,3 +181,19 @@ img {
   background: #d0c9ea;
   cursor: pointer;
 }
+
+.loginErrorMessage {
+  position: absolute;
+  top: 11vh;
+  left: 1vw;
+  border: 1px solid red;
+  color: red;
+  border-radius: 2vh;
+  padding: 0.5vh 1vh;
+  background-color: #ffecec;
+}
+
+.selectedPledge {
+  background: #d0c9ea;
+  color: white;
+}

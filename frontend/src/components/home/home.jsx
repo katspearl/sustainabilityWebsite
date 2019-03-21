@@ -37,7 +37,7 @@ class Home extends Component {
     // console.log(info);
     this.setState({ userInfo: info });
   };
-  
+
   render() {
     return (
       <div className={styles.homeWrapper}>
@@ -47,45 +47,80 @@ class Home extends Component {
               <span>{this.state.userInfo.score}</span>
               <div className={styles.personalShadow} />
             </div>
+            <div
+              className={[styles.smallerScoreBorder, styles.leftScore].join(
+                " "
+              )}
+            >
+              <div className={styles.smallerScore}>
+                <span>{this.state.userPledge.pledgeScore}</span>
+              </div>
+            </div>
+            <div
+              className={[styles.smallerScoreBorder, styles.middleScore].join(
+                " "
+              )}
+            >
+              <div className={styles.smallerScore}>
+                <span>asdf</span>
+              </div>
+            </div>
+            <div
+              className={[styles.smallerScoreBorder, styles.rightScore].join(
+                " "
+              )}
+            >
+              <div className={styles.smallerScore}>
+                <span>{this.state.userPledge.members}</span>
+              </div>
+            </div>
             {/* <Button onClick={e => this.updateScore(true)}>Increment!</Button>
             <Button onClick={e => this.updateScore(false)}>Decrement!</Button> */}
           </div>
-          <div className={styles.secondaryScores}>
-            <div className={styles.smallerScore} />
-            <div className={styles.smallerScore} />
-            <div className={styles.smallerScore} />
-          </div>
+          <div className={styles.secondaryScores} />
         </div>
-        <div className={styles.right} >
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Take your number 6 plastic to the station during Willy Week 
+        <div className={styles.right}>
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Take
+            your number 6 plastic to the station during Willy Week
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Buy one Fair Trade certified product (https://pin.it/gjtwq5tmyjfiis)
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Buy
+            one Fair Trade certified product (https://pin.it/gjtwq5tmyjfiis)
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Take your e-waste to a Rice e-waste station (https://facilities.rice.edu/recycling/special) 
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Take
+            your e-waste to a Rice e-waste station
+            (https://facilities.rice.edu/recycling/special)
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Visit the Rice Farmers Market (https://farmersmarket.rice.edu/) 
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Visit
+            the Rice Farmers Market (https://farmersmarket.rice.edu/)
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Bring your own cup to a party
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Bring
+            your own cup to a party
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Bring your own mug to Coffeehouse or East West
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Bring
+            your own mug to Coffeehouse or East West
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Sign up for a weekly fact with RISE Today
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Sign
+            up for a weekly fact with RISE Today
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Wash your clothes with cold water
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Wash
+            your clothes with cold water
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Cook one meal for yourself (https://www.favfamilyrecipes.com/easy-college-recipes-for-college-students/) 
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Cook
+            one meal for yourself
+            (https://www.favfamilyrecipes.com/easy-college-recipes-for-college-students/)
           </div>
-          <div><input type="checkbox" name="vehicle1" value="Bike" /> &nbsp;
-          Admire our newly made recycling bin signs!
+          <div>
+            <input type="checkbox" name="vehicle1" value="Bike" /> &nbsp; Admire
+            our newly made recycling bin signs!
           </div>
         </div>
       </div>
