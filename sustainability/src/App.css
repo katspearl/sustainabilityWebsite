@@ -48,5 +48,5 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #00c6a5;
+  /* background-color: #00c6a5; */
 }
