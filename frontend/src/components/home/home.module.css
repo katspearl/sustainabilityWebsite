@@ -15,11 +15,70 @@
 }
 
 .mainScore {
-  margin-top: 15%;
+  margin-top: 5%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.pledgeName {
+  color: black;
+  font-size: 20px;
+  padding-bottom: 0.25vh;
+  border-bottom: 2px solid black;
+  margin-bottom: 2vh;
+  font-weight: bold;
+}
+
+.scoreContainer {
+  width: 58vh;
+  height: 58vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.leftCircle {
+  height: 58vh;
+  width: 29vh;
+  border-bottom-left-radius: 29vh;
+  border-top-left-radius: 29vh;
+  left: 0;
+  background-color: #ff7676;
+  cursor: pointer;
+  position: absolute;
+  transition: all ease-in-out 0.2s;
+}
+
+.leftCircle:hover {
+  background-color: #b65454;
+}
+
+.rightCircle {
+  cursor: pointer;
+  height: 58vh;
+  width: 29vh;
+  border-bottom-right-radius: 29vh;
+  border-top-right-radius: 29vh;
+  background-color: rgb(60, 158, 255);
+
+  right: 0;
+  position: absolute;
+  transition: all ease-in-out 0.2s;
+}
+
+.rightCircle:hover {
+  background-color: rgb(39, 105, 171);
+}
+.scoreContainer > span {
+  cursor: pointer;
+  position: absolute;
+  color: white;
+  z-index: 1;
+  font-size: 30px;
 }
 
 .personalScore {
@@ -32,8 +91,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 220px;
+  font-size: 200px;
   font-weight: bold;
+  z-index: 1;
 }
 
 .personalShadow {
@@ -51,6 +111,21 @@
   justify-content: space-between;
 }
 
+.smallerScoreContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.smallerScoreName {
+  color: black;
+  font-size: 14px;
+  margin-top: 1.5vh;
+  font-weight: bold;
+  padding-bottom: 0.5vh;
+  border-bottom: 2px solid black;
+}
 .smallerScoreBorder {
   width: 18vh;
   height: 18vh;
@@ -66,7 +141,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .smallerScore {
@@ -77,18 +152,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .leftScore {
-  bottom: -29%;
+  bottom: -32%;
   left: 15%;
 }
 
 .middleScore {
-  bottom: -42%;
+  bottom: -41%;
 }
 
 .rightScore {
-  bottom: -29%;
+  bottom: -32%;
   right: 15%;
 }
