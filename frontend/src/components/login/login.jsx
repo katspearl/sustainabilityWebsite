@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Button from "react-bootstrap/Button";
 // import FormControl from "react-bootstrap/FormControl";
 import styles from "./login.module.css";
-import Avacado2 from "./YUM2.png";
+import Avacado2 from "./RES.png";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
@@ -188,9 +188,9 @@ class Login extends Component {
             }}
           />
         ) : null}
-        <div className={styles.left}>
-          <img src={Avacado2} alt="asdfasdf" />
-        </div>
+        {/* <div className={styles.left}>
+          <img src={Avacado2} alt="asdfasdf" width={300} height={300}/>
+        </div> */}
         <div className={styles.right}>
           <div className={styles.loginForm}>
             <input
@@ -212,7 +212,9 @@ class Login extends Component {
             </div>
           </div>
           {this.state.loginError ? loginError : null}
-          <h2>s u s t a i n a b i l i t y</h2>
+          <img src={Avacado2} alt="asdfasdf" width={150} height={150} vspace={15}/>
+          <h2>Sustainability Month</h2>
+          <h2>#owlbesustainable</h2>
           <div className={this.state.formVisible ? styles.signupWrapper : ""}>
             {signupForm}
             <div className={styles.signupBtn} onClick={this.handleSignup}>
