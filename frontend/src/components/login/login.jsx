@@ -18,7 +18,9 @@ class Login extends Component {
       signUpPassword: "",
       signUpError: false,
       loginError: false,
-      route: false
+      route: false,
+      signup: false,
+      login: false // this is honestly so stupid lmao
     };
   }
 
@@ -41,7 +43,7 @@ class Login extends Component {
         const accountMade = await res.json();
         console.log(accountMade);
         if (accountMade) {
-          this.setState({ route: true });
+          this.setState({ route: true, signup: true });
         } else {
           this.setState({ signUpError: true });
         }
@@ -59,9 +61,8 @@ class Login extends Component {
       );
       const accountExists = await res.json();
       if (accountExists) {
-        this.setState({ route: true });
+        this.setState({ route: true, login: true });
       } else {
-        console.log("do i get in here?");
         this.setState({ loginError: true });
       }
     }
@@ -128,7 +129,7 @@ class Login extends Component {
             onChange={e => this.updateSignUpUsername(e)}
           />
           <input
-            type="text"
+            type="password"
             id="uname"
             name="username"
             placeholder="password..."
@@ -175,7 +176,18 @@ class Login extends Component {
 
     return (
       <div className={styles.loginWrapper}>
-        {this.state.route ? <Redirect to={"/dashboard"} /> : null}
+        {this.state.route ? (
+          <Redirect
+            to={{
+              pathname: "/dashboard",
+              state: {
+                username: this.state.signup
+                  ? this.state.signUpUsername
+                  : this.state.loginPassword
+              }
+            }}
+          />
+        ) : null}
         <div className={styles.left}>
           <img src={Avacado2} alt="asdfasdf" />
         </div>
@@ -189,7 +201,7 @@ class Login extends Component {
               onChange={e => this.updateLoginUsername(e)}
             />
             <input
-              type="text"
+              type="password"
               id="pass"
               name="password"
               placeholder="password..."
@@ -211,29 +223,6 @@ class Login extends Component {
       </div>
     );
   }
-}
-
-{
-  /* <div className={styles.loginWrapper}>
-        <form onSubmit={this.handleSubmit} className={styles.login}>
-          <h1>Sign Up!</h1>
-          <FormControl
-            placeholder="username"
-            className={styles.form}
-            type="username"
-            inputRef={ref => (this.usernameField = ref)}
-          />
-          <FormControl
-            placeholder="password"
-            className={styles.form}
-            type="password"
-            inputRef={ref => (this.passwordField = ref)}
-          />
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </form>
-      </div> */
 }
 
 export default Login;

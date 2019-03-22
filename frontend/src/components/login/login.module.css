@@ -81,6 +81,16 @@ input[type="text"] {
   /* max-width: 300px; */
 }
 
+input[type="password"] {
+  padding: 8px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* max-width: 300px; */
+}
+
 .loginForm > input[type="text"] {
   margin-right: 20px;
 }

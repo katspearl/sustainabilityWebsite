@@ -20,19 +20,23 @@ class Home extends Component {
         { pledgeScore: 0 },
         { pledgeScore: 0 }
       ],
-      checkNames: []
+      checkNames: [],
+      username: ""
     };
   }
 
   componentDidMount = async () => {
-    var respPledges = await fetch("http://localhost:5000/pledges");
-    var respUserInfo = await fetch("http://localhost:5000/user/arthur01");
+    console.log(this.props);
+    // var respPledges = await fetch("http://localhost:5000/pledges");
+    var username = this.props.location.state.username;
+    await this.setState({ username: username });
+    var respUserInfo = await fetch(`http://localhost:5000/user/${username}`);
     var respPercentile = await fetch(
-      "http://localhost:5000/percentile/arthur01"
+      `http://localhost:5000/percentile/${username}`
     );
-    var respPledgeScores = await fetch("http://localhost:5000/pledges");
+    var respPledgeScores = await fetch(`http://localhost:5000/pledges`);
 
-    const pledges = await respPledges.json();
+    // const pledges = await respPledges.json();
     const userInfo = await respUserInfo.json();
     const percentile = await respPercentile.json();
     const pledgeScores = await respPledgeScores.json();
@@ -59,9 +63,12 @@ class Home extends Component {
 
   updateScore = async isIncrement => {
     var type = isIncrement ? "increment" : "decrement";
-    const res = await fetch(`http://localhost:5000/${type}/arthur01`, {
-      method: "POST"
-    });
+    const res = await fetch(
+      `http://localhost:5000/${type}/${this.state.username}`,
+      {
+        method: "POST"
+      }
+    );
     var resp = await res.json();
     // console.log(resp);
     var info = this.state.userInfo;
@@ -77,9 +84,12 @@ class Home extends Component {
   };
 
   checkBox = async (event, index) => {
-    const resp = await fetch(`http://localhost:5000/check/arthur01/${index}`, {
-      method: "POST"
-    });
+    const resp = await fetch(
+      `http://localhost:5000/check/${this.state.username}/${index}`,
+      {
+        method: "POST"
+      }
+    );
     const res = await resp.json();
     var info = this.state.userInfo;
     info.checkList = res;
@@ -184,109 +194,12 @@ class Home extends Component {
             </Pledge>
           </Card>
           <Card title={"Sustainability Checklist"} alignRight={true}>
-            {/* <div>
-              <input
-                onClick={this.checkBox(0)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Take your number 6 plastic to the station during Willy Week
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(1)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />{" "}
-              &nbsp; Buy one Fair Trade certified product (
-              <a href="https://pin.it/gjtwq5tmyjfiis">link</a>).
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(2)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />{" "}
-              &nbsp; Take your e-waste to a Rice e-waste station (
-              <a href="https://facilities.rice.edu/recycling/special">link</a>).
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(3)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Visit the Rice Farmers Market (
-              <a href="https://farmersmarket.rice.edu/">link</a>).
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(4)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Bring your own cup to a party
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(5)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Bring your own mug to Coffeehouse or East West
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(6)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Sign up for a weekly fact with RISE Today
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(7)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Wash your clothes with cold water
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(8)}
-                type="checkbox"
-                name="vehicle1"
-                value="Bike"
-              />
-              &nbsp; Cook one meal for yourself (
-              <a href="https://www.favfamilyrecipes.com/easy-college-recipes-for-college-students/">
-                link
-              </a>
-              ).
-            </div>
-            <div>
-              <input
-                onClick={this.checkBox(9)}
-                type="checkbox"
-                name="vehicle1"
-                value="true"
-              />
-              &nbsp; Admire our newly made recycling bin signs!
-            </div> */}
             {this.state.checkNames.map((name, index) => {
               return (
-                <div>
+                <div key={index}>
                   <input
                     key={index}
-                    onClick={e => this.checkBox(e, index)}
+                    onChange={e => this.checkBox(e, index)}
                     type="checkbox"
                     checked={this.state.userInfo.checkList[index]}
                   />
@@ -303,7 +216,7 @@ class Home extends Component {
 
 function Card(props) {
   var c = "";
-  if (props.alignRight == true) {
+  if (props.alignRight) {
     c += stylesR.alignRight;
   }
   return (

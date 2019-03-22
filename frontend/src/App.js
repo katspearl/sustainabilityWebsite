@@ -11,7 +11,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={loginPage} />
-            <Route exact path="/dashboard" component={dashboardPage} />
+            <Route exact path="/dashboard" component={Home} />
             {/* <Route component={errorPage}/> */}
           </Switch>
         </BrowserRouter>
@@ -21,7 +21,5 @@ class App extends Component {
 }
 
 const loginPage = match => <Login />;
-
-const dashboardPage = match => <Home />;
 
 export default App;
