@@ -178,13 +178,13 @@ class Home extends Component {
               val={this.state.pledgeScores[0].pledgeScore}
               ppl={this.state.pledgeScores[0].members}
             >
-              alternative modes of transportation used by
+              plant based meals eaten by
             </Pledge>
             <Pledge
               val={this.state.pledgeScores[1].pledgeScore}
               ppl={this.state.pledgeScores[1].members}
             >
-              plant based meals eaten by
+              alternative modes of transportation used by
             </Pledge>
             <Pledge
               val={this.state.pledgeScores[2].pledgeScore}
