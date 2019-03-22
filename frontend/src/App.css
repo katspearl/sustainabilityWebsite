@@ -43,9 +43,10 @@ button:focus {
 .App {
   min-height: 100vh;
   min-width: 100vw;
-  position: relative;
-  overflow: hidden;
-  display: flex;
+  position: block;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: block;
   justify-content: center;
   align-items: center;
 }

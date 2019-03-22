@@ -212,7 +212,9 @@ class Login extends Component {
             </div>
           </div>
           {this.state.loginError ? loginError : null}
-          <h2><img src={Avacado2} alt="asdfasdf" width={60} height={60}/> #owlbesustainable</h2>
+          <img src={Avacado2} alt="asdfasdf" width={150} height={150} vspace={15}/>
+          <h2>Sustainability Month</h2>
+          <h2>#owlbesustainable</h2>
           <div className={this.state.formVisible ? styles.signupWrapper : ""}>
             {signupForm}
             <div className={styles.signupBtn} onClick={this.handleSignup}>
