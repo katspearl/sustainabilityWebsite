@@ -10,6 +10,7 @@ const mongoURI =
   "@ds047207.mlab.com:47207/ac99db";
 // console.log(mongoURI);
 mongoose.connect(mongoURI, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 const user = new Schema({
   username: String,
