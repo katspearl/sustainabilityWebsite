@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* grid-template-columns: 1fr 1fr; 
   height: 100vh;
   width: 100vw; */
@@ -15,13 +16,11 @@
   background: rgb(175, 255, 191);
   /* display: grid;
   grid-template-rows: 67% 33%; */
+  width: 130%;
 
-  width: 100%;
-
-  display: inline-block;
-  text-align: center;
-
-  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -34,9 +33,8 @@
 .mainScore {
   margin-top: 5%;
   margin-bottom: 190px;
-  width: 95%;
-  max-width: 500px;
-  height: 300px;
+  width: 450px;
+  height: 290px;
 
   position: relative;
   display: flex;
@@ -55,6 +53,7 @@
 }
 
 .scoreContainer {
+  margin-top: 10px;
   width: 200px;
   height: 200px;
   display: flex;
@@ -151,10 +150,10 @@
   /* border-bottom: 2px solid black; */
 }
 .smallerScoreBorder {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   /* background-color: white; */
-  border-radius: 90px;
+  border-radius: 80px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
   background-image: linear-gradient(
     to bottom,
@@ -169,14 +168,14 @@
 }
 
 .smallerScore {
-  width: 75px;
-  height: 75px;
-  border-radius: 75px;
+  width: 65px;
+  height: 65px;
+  border-radius: 65px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 3em;
   font-weight: bold;
 }
 

@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
 
-  position: sticky;
+  width: 100%;
 
   background: rgb(175, 255, 191);
   /* border: 3px dashed red; */
