@@ -1,5 +1,5 @@
 .login {
-  position: fixed;
+  position: relative;
   top: 50%;
   left: 50%;
   width: 25%;
@@ -35,8 +35,26 @@
   height: 100vh;
   width: 100vw;
 
-  display: static;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
+}
+
+.res {
+  padding-top: 13px;
+  font-size: 1.3em;
+  color: #006600;
+  text-align: center;
+  line-height: 1em;
+}
+
+.expln {
+  font-size: 1.3em;
+  color: #006600;
+  text-align: center;
+  line-height: 1em;
+  padding-bottom: 10px;
 }
 
 .left {
@@ -96,7 +114,7 @@ input[type="password"] {
 .signupBtn {
   text-align: center;
   color: white;
-  background-color: rgba(0, 255, 0, 0.7);
+  background-color: rgba(250, 218, 94, 1);
   min-width: 200px;
   border-radius: 20px;
   padding: 7px;
@@ -106,8 +124,8 @@ input[type="password"] {
 
 .loginBtn {
   text-align: center;
-  color: rgba(0, 255, 0, 0.8);
-  border: 2px solid rgba(0, 255, 0, 0.8);
+  color: #fada5e;
+  border: 2px solid #fada5e;
   min-width: 100px;
   border-radius: 20px;
   padding: 8px 0px;
@@ -116,11 +134,11 @@ input[type="password"] {
 }
 
 .loginBtn:hover {
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(250, 218, 94, 0.1);
 }
 
 .signupBtn:hover {
-  background-color: rgba(0, 255, 0, 1);
+  background-color: rgba(250, 218, 94, 1);
 }
 
 h2 {
@@ -140,6 +158,8 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-top: auto;
 
   width: 100%;
 
@@ -170,12 +190,13 @@ img {
 }
 
 .signupForm > * {
-  min-width: 330px;
+  min-width: 260px;
   border: 1px solid red;
 }
 
 .signupWrapper {
   /* animation: fadeIn 2s 1; */
+  margin-bottom: auto;
 }
 
 .pledgeCheck {

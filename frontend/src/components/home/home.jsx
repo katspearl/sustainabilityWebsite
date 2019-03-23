@@ -102,8 +102,8 @@ class Home extends Component {
         <div className={styles.left}>
           <div className={styles.mainScore}>
             <div className={styles.screenshot}>
-              <p>Screenshot me and share your progress</p>
-              <p>with <b>#owlbesustainable</b> !</p>
+              <p>Come back to this page easily with</p>
+              <p><u>tinyurl.com/owlbesustainable-2019</u></p>
             </div>
             <PledgeDisplay val={this.state.userInfo.pledgeNumber} back={this.state.pledges[this.state.userInfo.pledgeNumber]} />
             <div className={styles.scoreContainer}>
@@ -172,12 +172,16 @@ class Home extends Component {
           {/* <div className={styles.secondaryScores} /> */}
         </div>
         <div className={stylesR.right}>
-          <PledgeCard title={"Pledges"}>
+          <div className={styles.screenshot}>
+            <p>Screenshot and share your progress</p>
+            <p>with <b>#owlbesustainable</b> !</p>
+          </div>
+          <PledgeCard title={"2019 Pledges"}>
             <Pledge
               val={this.state.pledgeScores[0].pledgeScore}
               ppl={this.state.pledgeScores[0].members}
             >
-              plant based meals eaten by
+              plant-based meals eaten by
             </Pledge>
             <Pledge
               val={this.state.pledgeScores[1].pledgeScore}
@@ -192,7 +196,7 @@ class Home extends Component {
               disposable items replaced by
             </Pledge>
           </PledgeCard>
-          <Bucket title={"Sust. Month Bucket List"} alignRight={true}>
+          <Bucket title={"Bucket List"} alignRight={true}>
             {this.state.checkNames.map((name, index) => {
               return (
                 <div key={index} className={stylesR.bucketItem}>
@@ -227,7 +231,7 @@ function PledgeDisplay(props) {
   if (props.val ==1) {
     return (
       <div className={styles.pledgeName}>
-        I have used cars less!
+        I have traveled OC w/o a car!
       </div>
       )
   }

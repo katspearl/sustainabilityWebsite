@@ -168,7 +168,7 @@ class Login extends Component {
               this.state.pledge === 2 ? styles.selectedPledge : ""
             ].join(" ")}
           >
-            Replace disposable items with reusables.
+            Use fewer disposable items.
           </div>
         </div>
       );
@@ -212,9 +212,10 @@ class Login extends Component {
             </div>
           </div>
           {this.state.loginError ? loginError : null}
-          <img src={Avacado2} alt="asdfasdf" width={150} height={150} vspace={15}/>
+          <div className={styles.res}>Rice Environmental Society</div>
+          <img src={Avacado2} alt="asdfasdf" width={130} height={130} vspace={15}/>
           <h2>Sustainability Month</h2>
-          <h2>#owlbesustainable</h2>
+          <div className={styles.expln}>Make a pledge and track your progress!</div>
           <div className={this.state.formVisible ? styles.signupWrapper : ""}>
             {signupForm}
             <div className={styles.signupBtn} onClick={this.handleSignup}>

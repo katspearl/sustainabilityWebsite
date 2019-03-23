@@ -28,11 +28,12 @@
   margin-bottom: 35px;
   line-height: .5em;
   color: #006600;
+  text-align: center;
 }
 
 .mainScore {
   margin-top: 5%;
-  margin-bottom: 190px;
+  margin-bottom: 170px;
   width: 450px;
   height: 290px;
 
@@ -180,16 +181,16 @@
 }
 
 .leftScore {
-  bottom: -37%;
+  bottom: -35%;
   left: 15%;
 }
 
 .middleScore {
-  bottom: -47%;
+  bottom: -41%;
 }
 
 .rightScore {
-  bottom: -37%;
+  bottom: -35%;
   right: 15%;
 }
 
