@@ -2,18 +2,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
-  overflow-y: scroll;
-
-  height: 100vh;
+  position: sticky;
 
   background: rgb(175, 255, 191);
   /* border: 3px dashed red; */
 }
 
 .pledge {
-  width: 500px;
+  width: 100%;
+  max-width: 450px;
 
   display: flex;
   flex-direction: row;
@@ -22,9 +21,13 @@
 
   border: 2px solid #d0c9ea;
   border-radius: 20px;
-  padding: 20px;
-  height: 4rem;
-  font-size: 1.1rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 10px;
+  height: 2.5em;
+  font-size: 1em;
+  line-height: 1em;
 
   margin: 1vh;
 
@@ -32,7 +35,7 @@
 }
 
 .pledgeVal {
-  font-size: 2rem;
+  font-size: 1.8em;
   font-weight: bold;
   margin-right: 5px;
 }
@@ -49,9 +52,10 @@
 }
 
 .alignRight {
-  align-self: flex-end;
-  margin-top: 50px !important;
-  margin-right: 50px !important;
+  align-self: center;
+  margin-top: 25px !important;
+  width: 500px;
+  /* margin-right: 50px !important; */
 }
 
 /* --niceOrange: #ff8a00; */
@@ -67,6 +71,19 @@
   border-radius: 20px;
   background: white;
   box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
+  align-self: center;
+}
+
+.bucketCard {
+  width: 97%;
+  max-width: 490px;
+  /* align-self: flex-start; */
+  margin: 5px;
+  /* align-self: flex-end; */
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
+  align-self: center;
 }
 
 .cardTitle {
@@ -77,9 +94,23 @@
   color: white;
   padding: 7px;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5em;
 }
+
+.pledgeContent {
+  padding: 10px;
+  padding-right: 20px;
+}
+
 
 .cardContent {
   padding: 20px;
+  padding-bottom: 15px !important;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+
+.bucketItem {
+  margin-bottom: .4em;
 }

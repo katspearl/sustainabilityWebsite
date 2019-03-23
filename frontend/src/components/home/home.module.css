@@ -1,40 +1,62 @@
 .homeWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* grid-template-columns: 1fr 1fr; 
   height: 100vh;
-  width: 100vw;
+  width: 100vw; */
+
+  overflow: scroll;
+  overflow-x: hidden !important;
+
 }
 
 .left {
   background: rgb(175, 255, 191);
   /* display: grid;
   grid-template-rows: 67% 33%; */
-  position: relative;
-  height: 100%;
+
   width: 100%;
+
+  display: inline-block;
+  text-align: center;
+
+  position: static;
+
+}
+
+.screenshot {
+  margin-bottom: 35px;
+  line-height: .5em;
+  color: #006600;
 }
 
 .mainScore {
   margin-top: 5%;
+  margin-bottom: 190px;
+  width: 95%;
+  max-width: 500px;
+  height: 300px;
+
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
 
 .pledgeName {
   color: black;
-  font-size: 20px;
+  font-size: 1.2em;
   padding-bottom: 0.25vh;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
   margin-bottom: 2vh;
   font-weight: bold;
 }
 
 .scoreContainer {
-  width: 58vh;
-  height: 58vh;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,10 +64,11 @@
 }
 
 .leftCircle {
-  height: 58vh;
-  width: 29vh;
-  border-bottom-left-radius: 29vh;
-  border-top-left-radius: 29vh;
+  height: 200px;
+  width: 100px;
+  border-bottom-left-radius: 200px;
+  border-top-left-radius: 200px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
   left: 0;
   background-color: #ff7676;
   cursor: pointer;
@@ -59,10 +82,11 @@
 
 .rightCircle {
   cursor: pointer;
-  height: 58vh;
-  width: 29vh;
-  border-bottom-right-radius: 29vh;
-  border-top-right-radius: 29vh;
+  height: 200px;
+  width: 100px;
+  border-bottom-right-radius: 200px;
+  border-top-right-radius: 200px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
   background-color: rgb(60, 158, 255);
 
   right: 0;
@@ -82,16 +106,16 @@
 }
 
 .personalScore {
-  width: 50vh;
-  height: 50vh;
+  width: 150px;
+  height: 150px;
   /* border: solid 1px #555; */
   background-color: white;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
-  border-radius: 25vh;
+  /* box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6); */
+  border-radius: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 200px;
+  font-size: 125px;
   font-weight: bold;
   z-index: 1;
 }
@@ -124,13 +148,13 @@
   margin-top: 1.5vh;
   font-weight: bold;
   padding-bottom: 0.5vh;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
 .smallerScoreBorder {
-  width: 18vh;
-  height: 18vh;
+  width: 90px;
+  height: 90px;
   /* background-color: white; */
-  border-radius: 9vh;
+  border-radius: 90px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
   background-image: linear-gradient(
     to bottom,
@@ -145,9 +169,9 @@
 }
 
 .smallerScore {
-  width: 16vh;
-  height: 16vh;
-  border-radius: 8vh;
+  width: 75px;
+  height: 75px;
+  border-radius: 75px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -157,16 +181,16 @@
 }
 
 .leftScore {
-  bottom: -32%;
+  bottom: -37%;
   left: 15%;
 }
 
 .middleScore {
-  bottom: -41%;
+  bottom: -47%;
 }
 
 .rightScore {
-  bottom: -32%;
+  bottom: -37%;
   right: 15%;
 }
 

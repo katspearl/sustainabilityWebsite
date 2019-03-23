@@ -101,9 +101,11 @@ class Home extends Component {
       <div className={styles.homeWrapper}>
         <div className={styles.left}>
           <div className={styles.mainScore}>
-            <div className={styles.pledgeName}>
-              {this.state.pledges[this.state.userInfo.pledgeNumber]}
+            <div className={styles.screenshot}>
+              <p>Screenshot me and share your progress</p>
+              <p>with <b>#owlbesustainable</b> !</p>
             </div>
+            <PledgeDisplay val={this.state.userInfo.pledgeNumber} back={this.state.pledges[this.state.userInfo.pledgeNumber]} />
             <div className={styles.scoreContainer}>
               <div
                 onClick={e => this.updateScore(false)}
@@ -140,20 +142,17 @@ class Home extends Component {
                   <span>{this.state.userPledge.pledgeScore}</span>
                 </div>
               </div>
-              <div className={styles.smallerScoreName}>Group Pledge Score</div>
+              <div className={styles.smallerScoreName}>Group Total</div>
             </div>
             <div
-              className={[
-                styles.smallerScoreContainer,
-                styles.middleScore
-              ].join(" ")}
+              className={[styles.smallerScoreContainer, styles.middleScore].join(" ")}
             >
               <div className={[styles.smallerScoreBorder].join(" ")}>
                 <div className={styles.smallerScore}>
                   <span>{this.state.percentile}</span>
                 </div>
               </div>
-              <div className={styles.smallerScoreName}>Percentile</div>
+              <div className={styles.smallerScoreName}>My Percentile</div>
             </div>
             <div
               className={[styles.smallerScoreContainer, styles.rightScore].join(
@@ -165,15 +164,15 @@ class Home extends Component {
                   <span>{this.state.userPledge.members}</span>
                 </div>
               </div>
-              <div className={styles.smallerScoreName}>Number of Members</div>
+              <div className={styles.smallerScoreName}>Participants</div>
             </div>
             {/* <Button onClick={e => this.updateScore(true)}>Increment!</Button>
             <Button onClick={e => this.updateScore(false)}>Decrement!</Button> */}
           </div>
-          <div className={styles.secondaryScores} />
+          {/* <div className={styles.secondaryScores} /> */}
         </div>
         <div className={stylesR.right}>
-          <Card title={"Pledges"}>
+          <PledgeCard title={"Pledges"}>
             <Pledge
               val={this.state.pledgeScores[0].pledgeScore}
               ppl={this.state.pledgeScores[0].members}
@@ -184,43 +183,93 @@ class Home extends Component {
               val={this.state.pledgeScores[1].pledgeScore}
               ppl={this.state.pledgeScores[1].members}
             >
-              alternative modes of transportation used by
+              car rides saved by
             </Pledge>
             <Pledge
               val={this.state.pledgeScores[2].pledgeScore}
               ppl={this.state.pledgeScores[2].members}
             >
-              disposable items replaced with reusable items by
+              disposable items replaced by
             </Pledge>
-          </Card>
-          <Card title={"Sustainability Checklist"} alignRight={true}>
+          </PledgeCard>
+          <Bucket title={"Sust. Month Bucket List"} alignRight={true}>
             {this.state.checkNames.map((name, index) => {
               return (
-                <div key={index}>
+                <div key={index} className={stylesR.bucketItem}>
                   <input
                     key={index}
                     onChange={e => this.checkBox(e, index)}
                     type="checkbox"
                     checked={this.state.userInfo.checkList[index]}
                   />
-                  &nbsp; {name}
+                  &nbsp; {name} 
                 </div>
               );
             })}
-          </Card>
+          </Bucket>
         </div>
       </div>
     );
   }
 }
 
-function Card(props) {
+
+function PledgeDisplay(props) {
+  
+  if (props.val ==0) {
+    return (
+      <div className={styles.pledgeName}>
+        I have eaten more plant-based!
+      </div>
+      )
+  }
+
+  if (props.val ==1) {
+    return (
+      <div className={styles.pledgeName}>
+        I have used cars less!
+      </div>
+      )
+  }
+
+  if (props.val ==2) {
+    return (
+      <div className={styles.pledgeName}>
+        I have used fewer disposables!
+      </div>
+      )
+  }
+
+  else {
+    return (
+      <div className={styles.pledgeName}>
+        {props.back}
+      </div>
+      )
+    }
+}
+
+
+function PledgeCard(props) {
   var c = "";
   if (props.alignRight) {
     c += stylesR.alignRight;
   }
   return (
     <div className={[stylesR.card, c].join(" ")}>
+      <div className={stylesR.cardTitle}>{props.title}</div>
+      <div className={stylesR.pledgeContent}>{props.children}</div>
+    </div>
+  );
+}
+
+function Bucket(props) {
+  var c = "";
+  if (props.alignRight) {
+    c += stylesR.alignRight;
+  }
+  return (
+    <div className={[stylesR.bucketCard, c].join(" ")}>
       <div className={stylesR.cardTitle}>{props.title}</div>
       <div className={stylesR.cardContent}>{props.children}</div>
     </div>
@@ -230,7 +279,7 @@ function Card(props) {
 function Pledge(props) {
   return (
     <div className={stylesR.pledge}>
-      <span className={stylesR.pledgeVal}>{props.val}</span>
+      <span className={stylesR.pledgeVal}>{props.val}&nbsp;</span>
       {props.children} {props.ppl} people.
     </div>
   );

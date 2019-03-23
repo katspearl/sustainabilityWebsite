@@ -157,7 +157,7 @@ class Login extends Component {
               this.state.pledge === 1 ? styles.selectedPledge : ""
             ].join(" ")}
           >
-            Use more alternative transportation.
+            Use alternatives to cars.
           </div>
           <div
             data-index="2"
