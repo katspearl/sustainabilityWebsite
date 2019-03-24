@@ -33,7 +33,7 @@ class Login extends Component {
     } else {
       if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "") {
         const res = await fetch(
-          `http://localhost:5000/user/${
+          `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/user/${
             this.state.signUpUsername
           }/${signUpPassword}/${pledge}`,
           {
@@ -57,7 +57,7 @@ class Login extends Component {
 
     if (loginPassword !== "" && loginUsername !== "") {
       const res = await fetch(
-        `http://localhost:5000/login/${this.state.loginUsername}`
+        `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/login/${this.state.loginUsername}`
       );
       const accountExists = await res.json();
       if (accountExists) {
