@@ -43,7 +43,7 @@ class Home extends Component {
     const checkNames = [
       "Take your number 6 plastic to the station during Willy Week",
       "Buy one Fair Trade certified product",
-      "Take your e-waste to a Rice e-waste station",
+      "Take your e-waste to a Rice e-waste station https://facilities.rice.edu/recycling/special/",
       "Visit the Rice Farmers Market",
       "Bring your own cup to a party",
       "Bring your own mug to Coffeehouse or East West",
@@ -222,24 +222,39 @@ function PledgeDisplay(props) {
   
   if (props.val ==0) {
     return (
-      <div className={styles.pledgeName}>
-        I have eaten more plant-based!
+      <div className={styles.pledgeCont}>
+        <div className={styles.pledgeName}>
+          +1 every time you eat a plant-based meal!
+        </div>
+        <div className={styles.pledgeEx}>
+          "(or when you try a plant-based protein)"
+        </div>
       </div>
       )
   }
 
   if (props.val ==1) {
     return (
-      <div className={styles.pledgeName}>
-        I have traveled OC w/o a car!
+      <div className={styles.pledgeCont}>
+        <div className={styles.pledgeName}>
+          +1 every time you travel OC without a car!
+        </div>
+        <div className={styles.pledgeEx}>
+          (walk, bike, metro, etc.)
+        </div>
       </div>
       )
   }
 
   if (props.val ==2) {
     return (
-      <div className={styles.pledgeName}>
-        I have used fewer disposables!
+      <div className={styles.pledgeCont}>
+        <div className={styles.pledgeName}>
+          +1 every time you use a reusable item!
+        </div>
+        <div className={styles.pledgeEx}>
+          (bottles, utensils, bags, razors, etc.)
+        </div>
       </div>
       )
   }
