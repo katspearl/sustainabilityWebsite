@@ -30,11 +30,11 @@ class Home extends Component {
     // var respPledges = await fetch("http://localhost:5000/pledges");
     var username = this.props.location.state.username;
     await this.setState({ username: username });
-    var respUserInfo = await fetch(`http://localhost:5000/user/${username}`);
+    var respUserInfo = await fetch(`http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/user/${username}`);
     var respPercentile = await fetch(
-      `http://localhost:5000/percentile/${username}`
+      `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/percentile/${username}`
     );
-    var respPledgeScores = await fetch(`http://localhost:5000/pledges`);
+    var respPledgeScores = await fetch(`http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/pledges`);
 
     // const pledges = await respPledges.json();
     const userInfo = await respUserInfo.json();
@@ -64,7 +64,7 @@ class Home extends Component {
   updateScore = async isIncrement => {
     var type = isIncrement ? "increment" : "decrement";
     const res = await fetch(
-      `http://localhost:5000/${type}/${this.state.username}`,
+      `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/${type}/${this.state.username}`,
       {
         method: "POST"
       }
@@ -85,7 +85,7 @@ class Home extends Component {
 
   checkBox = async (event, index) => {
     const resp = await fetch(
-      `http://localhost:5000/check/${this.state.username}/${index}`,
+      `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/check/${this.state.username}/${index}`,
       {
         method: "POST"
       }
