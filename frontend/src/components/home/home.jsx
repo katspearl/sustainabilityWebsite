@@ -227,7 +227,7 @@ function PledgeDisplay(props) {
           +1 every time you eat a plant-based meal!
         </div>
         <div className={styles.pledgeEx}>
-          "(or when you try a plant-based protein)"
+          (or when you try a plant-based protein)
         </div>
       </div>
       )
