@@ -57,7 +57,9 @@ class Login extends Component {
 
     if (loginPassword !== "" && loginUsername !== "") {
       const res = await fetch(
-        `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/login/${this.state.loginUsername}`
+        `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/login/${
+          this.state.loginUsername
+        }`
       );
       const accountExists = await res.json();
       if (accountExists) {
@@ -183,7 +185,7 @@ class Login extends Component {
               state: {
                 username: this.state.signup
                   ? this.state.signUpUsername
-                  : this.state.loginPassword
+                  : this.state.loginUsername
               }
             }}
           />
@@ -213,9 +215,17 @@ class Login extends Component {
           </div>
           {this.state.loginError ? loginError : null}
           <div className={styles.res}>Rice Environmental Society</div>
-          <img src={Avacado2} alt="asdfasdf" width={130} height={130} vspace={15}/>
+          <img
+            src={Avacado2}
+            alt="asdfasdf"
+            width={130}
+            height={130}
+            vspace={15}
+          />
           <h2>Sustainability Month</h2>
-          <div className={styles.expln}>Make a pledge and track your progress!</div>
+          <div className={styles.expln}>
+            Make a pledge and track your progress!
+          </div>
           <div className={this.state.formVisible ? styles.signupWrapper : ""}>
             {signupForm}
             <div className={styles.signupBtn} onClick={this.handleSignup}>
