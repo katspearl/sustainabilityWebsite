@@ -28,15 +28,16 @@ class Login extends Component {
   handleSignup = async () => {
     const signUpUsername = this.state.signUpUsername;
     const signUpPassword = this.state.signUpPassword;
+    const signUpEmail = this.state.signUpEmail;
     const pledge = this.state.pledge;
     if (!this.state.formVisible) {
       this.setState({ formVisible: true });
     } else {
-      if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "") {
+      if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "" && signUpEmail !== "") {
         const res = await fetch(
           `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/user/${
             this.state.signUpUsername
-          }/${signUpPassword}/${pledge}`,
+          }/${signUpPassword}/${signUpEmail}/${pledge}`,
           {
             method: "POST"
           }
