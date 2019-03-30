@@ -103,7 +103,7 @@ class Home extends Component {
           <div className={styles.mainScore}>
             <div className={styles.screenshot}>
               <p>Come back to this page easily with</p>
-              <p><u>tinyurl.com/owlbesustainable-2019</u></p>
+              <p><u><a href="tinyurl.com/owlbesustainable-2019">tinyurl.com/owlbesustainable-2019</a></u></p>
             </div>
             <PledgeDisplay val={this.state.userInfo.pledgeNumber} back={this.state.pledges[this.state.userInfo.pledgeNumber]} />
             <div className={styles.scoreContainer}>

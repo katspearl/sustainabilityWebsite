@@ -16,7 +16,8 @@ const user = new Schema({
   username: String,
   pledgeNumber: Number,
   score: Number,
-  checkList: [Boolean]
+  checkList: [Boolean],
+  email: String
 });
 
 const pledge = new Schema({
@@ -70,13 +71,14 @@ async function createPledge(pledge, pledgeNumber) {
   return true;
 }
 
-async function createUser(username, password, pledgeNumber) {
+async function createUser(username, password, pledgeNumber, email) {
   const find = await Users.findOne({ username: username });
   if (!find) {
     await Users.create({
       username: username,
       pledgeNumber: pledgeNumber,
-      score: 0
+      score: 0,
+      email: email
     }).catch(err => {
       return false;
     });
@@ -177,6 +179,14 @@ async function updateScores(username, isIncrement) {
 
   //   console.log(resp.score + val);
   return resp.score + val;
+}
+
+async function top3(pledgeNumber) {
+  const top3 = await Users.aggregate([
+    { $match: { pledgeNumber: pledgeNumber } },
+    { $sort: { score: -1 } },
+    { $limit: 3 },
+  ]);
 }
 
 // updateScores("arthur01", false);

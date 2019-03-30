@@ -45,11 +45,11 @@ app.get("/user/:username", async function(req, res) {
   res.json(resp);
 });
 
-app.post("/user/:username/:password/:pledgeNumber", async function(req, res) {
+app.post("/user/:username/:password/:email/:pledgeNumber", async function(req, res) {
   const username = req.params.username.split("+").join(" ");
   const password = req.params.password.split("+").join(" ");
   const pledgeNumber = parseInt(req.params.pledgeNumber);
-  const resp = await connection.createUser(username, password, pledgeNumber);
+  const resp = await connection.createUser(username, password, pledgeNumber, email);
   res.json(resp);
 });
 

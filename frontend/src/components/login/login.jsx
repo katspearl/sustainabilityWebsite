@@ -16,6 +16,7 @@ class Login extends Component {
       loginPassword: "",
       signUpUsername: "",
       signUpPassword: "",
+      signUpEmail: "",
       signUpError: false,
       loginError: false,
       route: false,
@@ -84,6 +85,13 @@ class Login extends Component {
     });
   };
 
+  updateSignUpEmail = evt => {
+    console.log(evt.target.value);
+    this.setState({
+      signUpEmail: evt.target.value
+    });
+  };
+
   updateLoginUsername = evt => {
     // console.log(evt.target.value);
     this.setState({
@@ -132,10 +140,17 @@ class Login extends Component {
           />
           <input
             type="password"
-            id="uname"
-            name="username"
+            id="pass"
+            name="password"
             placeholder="password..."
             onChange={e => this.updateSignUpPassword(e)}
+          />
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="contact email..."
+            onChange={e => this.updateSignUpEmail(e)}
           />
           s e l e c t a p l e d g e
           <div
