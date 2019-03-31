@@ -187,6 +187,7 @@ async function top3(pledgeNumber) {
     { $sort: { score: -1 } },
     { $limit: 3 },
   ]);
+  console.log(top3);
 }
 
 // updateScores("arthur01", false);
