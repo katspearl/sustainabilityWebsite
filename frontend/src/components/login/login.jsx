@@ -33,11 +33,10 @@ class Login extends Component {
     if (!this.state.formVisible) {
       this.setState({ formVisible: true });
     } else {
-      if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "" && signUpEmail !== "") {
+      if (pledge !== -1 && signUpPassword !== "" && signUpUsername !== "") {
         const res = await fetch(
           `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/user/${
-            this.state.signUpUsername
-          }/${signUpPassword}/${pledge}`,
+            signUpUsername}/${signUpPassword}/${pledge}`,
           {
             method: "POST"
           }
@@ -87,7 +86,7 @@ class Login extends Component {
   };
 
   updateSignUpEmail = evt => {
-    console.log(evt.target.value);
+    // console.log(evt.target.value);
     this.setState({
       signUpEmail: evt.target.value
     });
@@ -136,7 +135,7 @@ class Login extends Component {
             type="text"
             id="uname"
             name="username"
-            placeholder="username..."
+            placeholder="Rice netid..."
             onChange={e => this.updateSignUpUsername(e)}
           />
           <input
@@ -146,6 +145,7 @@ class Login extends Component {
             placeholder="password..."
             onChange={e => this.updateSignUpPassword(e)}
           />
+          {/*
           <input
             type="text"
             id="email"
@@ -153,6 +153,7 @@ class Login extends Component {
             placeholder="contact email..."
             onChange={e => this.updateSignUpEmail(e)}
           />
+          */}
           s e l e c t a p l e d g e
           <div
             data-index="0"
@@ -211,11 +212,12 @@ class Login extends Component {
         </div> */}
         <div className={styles.right}>
           <div className={styles.loginForm}>
+            {this.state.loginError ? loginError : null}
             <input
               type="text"
               id="uname"
               name="username"
-              placeholder="username..."
+              placeholder="Rice netid..."
               onChange={e => this.updateLoginUsername(e)}
             />
             <input
@@ -229,7 +231,6 @@ class Login extends Component {
               Log in
             </div>
           </div>
-          {this.state.loginError ? loginError : null}
           <div className={styles.res}>Rice Environmental Society</div>
           <img
             src={Avacado2}

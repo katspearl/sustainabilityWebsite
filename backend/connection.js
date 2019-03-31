@@ -71,14 +71,14 @@ async function createPledge(pledge, pledgeNumber) {
   return true;
 }
 
-async function createUser(username, password, pledgeNumber, email) {
+async function createUser(username, password, pledgeNumber) {
   const find = await Users.findOne({ username: username });
   if (!find) {
     await Users.create({
       username: username,
       pledgeNumber: pledgeNumber,
       score: 0,
-      email: email
+      // email: email
     }).catch(err => {
       return false;
     });

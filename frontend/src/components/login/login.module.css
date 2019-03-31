@@ -216,8 +216,10 @@ img {
 }
 
 .loginErrorMessage {
-  position: absolute;
-  top: 11vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 3vh;
   left: 1vw;
   border: 1px solid red;
   color: red;
