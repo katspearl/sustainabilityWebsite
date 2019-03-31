@@ -37,7 +37,7 @@ class Login extends Component {
         const res = await fetch(
           `http://ec2-3-87-162-178.compute-1.amazonaws.com:5000/user/${
             this.state.signUpUsername
-          }/${signUpPassword}/${signUpEmail}/${pledge}`,
+          }/${signUpPassword}/${pledge}`,
           {
             method: "POST"
           }
